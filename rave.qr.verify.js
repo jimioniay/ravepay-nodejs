@@ -1,12 +1,6 @@
 var morx = require('morx');
 var q = require('q');
 
-var r = require('../lib/rave.base');
-var R = new r(
-  'FLWPUBK_TEST-0a9f81acd6729c8446a5a16ab1051f47-X',
-  'FLWSECK_TEST-67a6f923caf41c603c6dbdb94f160152-X',
-);
-
 //This allows you verify a QR payment
 
 var spec = morx
@@ -39,21 +33,6 @@ function service(data, _rave) {
   return d.promise;
 }
 
-payload = {
-  txRef: 'm3s4m0c1526722407366',
-};
-
-service(payload, R)
-  .then((err, res) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(res);
-    }
-  })
-  .catch(err => {
-    console.log('Exception caught:::', err);
-  });
 
 service.morxspc = spec;
 module.exports = service;
